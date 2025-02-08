@@ -85,31 +85,24 @@ top_products = df.groupby('product')['spend'].sum().nlargest(5)
 
 ## **Data Visualizations**
 
-### **1. Yearly City-wise Spending Trends**
+### **1. b. Comparison of yearly spend on air tickets**
 ```python
-import seaborn as sns
-import matplotlib.pyplot as plt
 
-df['year'] = df['transaction_date'].dt.year
-city_spend = df.groupby(['year', 'city'])['spend'].sum().reset_index()
-
-plt.figure(figsize=(12,6))
-sns.barplot(x='year', y='spend', hue='city', data=city_spend)
-plt.title('Yearly City-wise Spending')
+plt.bar(ats.year,ats.Amount)
+plt.xlabel("year")
+plt.ylabel("Amount")
+plt.title("Comparison of yearly spend on air tickets")
 plt.show()
 ```
 
 <img width="549" alt="Screenshot 2025-02-07 at 7 41 54 PM" src="https://github.com/user-attachments/assets/f8557267-50d6-4ec4-b8a2-2b912ba7021d" />
 
 
-### **2. Monthly Spend Comparison Across Cities**
+### **2. Monthly comparison of total spends, city wise**
 ```python
-monthly_city_spend = df.groupby(['month', 'city'])['spend'].sum().unstack()
-
-monthly_city_spend.plot(kind='line', figsize=(12,6))
-plt.title('Monthly Spend Comparison by City')
-plt.xlabel('Month')
-plt.ylabel('Total Spend')
+ca_sp['monthly'] = ca_sp.Month.apply(lambda x : pd.Timestamp.strftime(x , format = '%B') )
+mc = ca_sp.groupby(['City','monthly'])['Amount'].sum().reset_index()
+mc.pivot(index = 'City', columns = 'monthly' , values = 'Amount').plot(kind="bar",figsize=(8,8),width=0.8)
 plt.show()
 ```
 <img width="588" alt="Screenshot 2025-02-07 at 7 41 39 PM" src="https://github.com/user-attachments/assets/17564e02-834a-4d4b-b493-6f60bc0f04a1" />
