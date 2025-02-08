@@ -99,6 +99,9 @@ plt.title('Yearly City-wise Spending')
 plt.show()
 ```
 
+<img width="549" alt="Screenshot 2025-02-07 at 7 41 54 PM" src="https://github.com/user-attachments/assets/f8557267-50d6-4ec4-b8a2-2b912ba7021d" />
+
+
 ### **2. Monthly Spend Comparison Across Cities**
 ```python
 monthly_city_spend = df.groupby(['month', 'city'])['spend'].sum().unstack()
@@ -109,6 +112,8 @@ plt.xlabel('Month')
 plt.ylabel('Total Spend')
 plt.show()
 ```
+<img width="588" alt="Screenshot 2025-02-07 at 7 41 39 PM" src="https://github.com/user-attachments/assets/17564e02-834a-4d4b-b493-6f60bc0f04a1" />
+
 
 ### **3. Seasonal Trends in Spending**
 ```python
@@ -121,6 +126,8 @@ plt.xticks(range(1,13), ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
 plt.title('Seasonal Trends in Spending')
 plt.show()
 ```
+
+<img width="787" alt="Screenshot 2025-02-07 at 7 40 57 PM" src="https://github.com/user-attachments/assets/096f43eb-9e8a-400d-a182-76642c61ec48" />
 
 ---
 
